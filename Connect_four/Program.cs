@@ -10,6 +10,9 @@ namespace Connect_four
     {
         static void Main(string[] args)
         {
+            gameBoardModel gameBoard = new gameBoardModel();
+
+            Array arr = gameBoard.Board;
         }
     }
 }
