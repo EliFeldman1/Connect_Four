@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="ChackForFour.cs" />
     <Compile Include="Models\gameBoardModel.cs" />
+    <Compile Include="Models\PointAddingModel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

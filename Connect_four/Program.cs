@@ -10,9 +10,18 @@ namespace Connect_four
     {
         static void Main(string[] args)
         {
+            ChackForFour chackForFour= new ChackForFour();
             gameBoardModel gameBoard = new gameBoardModel();
-
-            Array arr = gameBoard.Board;
+            PointAddingModel pointAddingModel= new PointAddingModel();
+            pointAddingModel.CurrentPlayer = "Red";
+            for (int i = 2; i < 6; i++)
+            {
+                gameBoard.Board[i, i] = pointAddingModel.CurrentPlayer;
+            }
+            pointAddingModel.CurrentPlayer = "Red";
+            pointAddingModel.Colum = 5;
+            pointAddingModel.Row = 5;
+            bool Is = chackForFour.DiagonalRightUpTest(gameBoard, pointAddingModel);
         }
     }
 }

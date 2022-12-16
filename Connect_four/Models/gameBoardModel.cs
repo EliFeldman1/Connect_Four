@@ -10,8 +10,7 @@ namespace Connect_four
     {
         public string[,] Board = new string[7, 6];
         public Array ColumnCounter = new Array[7];
-        public int Row = new int();
-        public int Colum = new int();
+       
 
     }
 }
