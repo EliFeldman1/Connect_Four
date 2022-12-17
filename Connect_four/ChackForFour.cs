@@ -9,27 +9,31 @@ namespace Connect_four
     internal class ChackForFour
     {
 
-        // Diagonal test;
-        public bool DiagonalRightUpTest(gameBoardModel gameBoardModel, PointAddingModel PointAddingModel)
+        
+        public bool DiagonalRightUpTest(gameBoardModel gameBoard, PointAddingModel PointAdding)
         {
             // this function chack's if the bord has four points Diagonally, and this when the right side is the bottom
-            int startPointRow = Math.Max(0, (PointAddingModel.Row - 3));
-            int endPointRow =Math.Min(6,(PointAddingModel.Row + 3));
-            int startPointColumn =Math.Max(0,PointAddingModel.Colum-3);
-            int endPointColumn = Math.Min(5, PointAddingModel.Colum + 3);
+            PointAdding.startPointRow = Math.Max(0, (PointAdding.Row - 3));
+            PointAdding.endPointRow = Math.Min(6, (PointAdding.Row + 3));
+            PointAdding.startPointColumn = Math.Max(0, PointAdding.Column - 3);
+            PointAdding.endPointColumn = Math.Min(5, PointAdding.Column + 3);
+            //compares coordinates of the starting point, in order to return one uniform point
+            int delta = Comparison(PointAdding);
+            PointAdding.startPointRow = PointAdding.Row - delta;
+            PointAdding.startPointColumn = PointAdding.Column - delta;
             int counter = 0;
-            for (int i = 0; startPointRow+i< endPointRow || startPointColumn+i< endPointColumn; i++)
+            for (int i = 0; PointAdding.startPointRow + i < PointAdding.endPointRow + 1 || PointAdding.startPointColumn + i < PointAdding.endPointColumn + 1; i++)
             {
-                if (gameBoardModel.Board[startPointRow + i, startPointColumn + i] == PointAddingModel.CurrentPlayer)
+                if (gameBoard.Board[PointAdding.startPointRow + i, PointAdding.startPointColumn + i] == PointAdding.CurrentPlayer)
                 {
                     counter++;
-                    if (counter == 4) 
+                    if (counter == 4)
                     {
                         return true;
                     }
 
                 }
-                else 
+                else
                 {
                     counter = 0;
                 }
@@ -38,7 +42,105 @@ namespace Connect_four
 
             return false;
         }
-        // Perpendicular test
-        //  Horizontal test
+        public bool DiagonalRightDownTest(gameBoardModel gameBoard, PointAddingModel PointAdding)
+        {
+            // this function chack's if the bord has four points Diagonally, and this when the right side is the bottom
+            PointAdding.startPointRow = Math.Max(0, (PointAdding.Row - 3));
+            PointAdding.endPointRow = Math.Min(6, (PointAdding.Row + 3));
+            PointAdding.startPointColumn = Math.Min(5, PointAdding.Column + 3);
+            PointAdding.endPointColumn = Math.Max(0, PointAdding.Column - 3);
+            //compares coordinates of the starting point, in order to return one uniform point
+            int delta = Comparison(PointAdding);
+            PointAdding.startPointRow = PointAdding.Row - delta;
+            PointAdding.startPointColumn = PointAdding.Column + delta;
+            int counter = 0;
+            for (int i = 0; PointAdding.startPointRow + i < PointAdding.endPointRow + 1 || PointAdding.startPointColumn + i > PointAdding.endPointColumn + 1; i++)
+            {
+                if (gameBoard.Board[PointAdding.startPointRow + i, PointAdding.startPointColumn - i] == PointAdding.CurrentPlayer)
+                {
+                    counter++;
+                    if (counter == 4)
+                    {
+                        return true;
+                    }
+
+                }
+                else
+                {
+                    counter = 0;
+                }
+
+            }
+
+            return false;
+        }
+      
+
+        public bool HorizontalTest(gameBoardModel gameBoard, PointAddingModel PointAdding)
+        {
+            // this function chack's if the bord has four points Horizontal.
+            PointAdding.startPointRow = Math.Max(0, (PointAdding.Row - 3));
+            PointAdding.endPointRow = Math.Min(6, (PointAdding.Row + 3));
+
+
+            int counter = 0;
+            for (int i = 0; PointAdding.startPointRow + i < PointAdding.endPointRow + 1; i++)
+            {
+                if (gameBoard.Board[PointAdding.startPointRow + i, PointAdding.Column] == PointAdding.CurrentPlayer)
+                {
+                    counter++;
+                    if (counter == 4)
+                    {
+                        return true;
+                    }
+
+                }
+                else
+                {
+                    counter = 0;
+                }
+
+            }
+
+            return false;
+        }
+        public bool PerpendicularTest(gameBoardModel gameBoard, PointAddingModel PointAdding)
+        {
+            // this function chack's if the bord has four points Perpendicular.
+            PointAdding.startPointColumn = Math.Max(0, (PointAdding.Row - 3));
+            PointAdding.endPointColumn = Math.Min(6, (PointAdding.Row + 3));
+
+
+            int counter = 0;
+            for (int i = 0; PointAdding.startPointColumn + i < PointAdding.endPointColumn + 1; i++)
+            {
+                if (gameBoard.Board[PointAdding.Row, PointAdding.startPointColumn+i] == PointAdding.CurrentPlayer)
+                {
+                    counter++;
+                    if (counter == 4)
+                    {
+                        return true;
+                    }
+
+                }
+                else
+                {
+                    counter = 0;
+                }
+
+            }
+
+            return false;
+        }
+        int Comparison(PointAddingModel pointAdding)
+        {
+            //This function compares coordinates of the starting point, in order to return one uniform point.
+            int rowDelta = Math.Abs(pointAdding.startPointRow - pointAdding.Row);
+
+            int coluumnDelta = Math.Abs(pointAdding.startPointColumn - pointAdding.Column);
+            int Delta = Math.Min(rowDelta, coluumnDelta);
+            return Delta;
+        }
+
     }
 }

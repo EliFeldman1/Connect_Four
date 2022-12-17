@@ -10,6 +10,10 @@ namespace Connect_four
     {
         public string CurrentPlayer { get; set; }
         public int Row { get; set; }
-        public int Colum { get; set; }
+        public int Column { get; set; }
+        public int startPointRow { get; set; }
+        public int endPointRow { get; set; }
+        public int startPointColumn { get; set; }
+        public int endPointColumn { get; set; }
     }
 }
