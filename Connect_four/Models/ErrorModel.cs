@@ -6,11 +6,9 @@ using System.Threading.Tasks;
 
 namespace Connect_four
 {
-    internal class gameBoardModel
+    internal class ErrorModel
     {
-        public string[,] Board = new string[7, 6];
-        public int [] ColumnCounter = new int[6];
-       
-
+        public bool Posible { get; set; }
+        public string Message { get; set; }
     }
 }

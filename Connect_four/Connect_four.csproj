@@ -43,7 +43,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ChackForFour.cs" />
+    <Compile Include="FunctionClasss\ErrorClass.cs" />
+    <Compile Include="FunctionClasss\ChackForFour.cs" />
+    <Compile Include="Controllers\ErrorControllr.cs" />
+    <Compile Include="Models\ErrorModel.cs" />
+    <Compile Include="Controllers\GameController.cs" />
     <Compile Include="Models\gameBoardModel.cs" />
     <Compile Include="Models\PointAddingModel.cs" />
     <Compile Include="Program.cs" />
