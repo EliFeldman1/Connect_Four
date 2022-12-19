@@ -18,9 +18,18 @@ namespace Connect_four
             PointAdding.startPointColumn = Math.Max(0, PointAdding.Column - 3);
             PointAdding.endPointColumn = Math.Min(5, PointAdding.Column + 3);
             //compares coordinates of the starting point, in order to return one uniform point
-            int delta = Comparison(PointAdding);
-            PointAdding.startPointRow = PointAdding.Row - delta;
-            PointAdding.startPointColumn = PointAdding.Column - delta;
+            int deltaStart = ComparisonStart(PointAdding);
+            
+                PointAdding.startPointRow = PointAdding.Row - deltaStart;
+                PointAdding.startPointColumn = PointAdding.Column - deltaStart;
+
+            //compares coordinates of the ending point, in order to return one uniform point
+            int deltaEnd = ComparisonEnd(PointAdding);
+            
+            
+                PointAdding.endPointRow = PointAdding.Row + deltaEnd;
+                PointAdding.endPointColumn= PointAdding.Column + deltaEnd;
+            
             int counter = 0;
             for (int i = 0; PointAdding.startPointRow + i < PointAdding.endPointRow + 1 || PointAdding.startPointColumn + i < PointAdding.endPointColumn + 1; i++)
             {
@@ -50,9 +59,17 @@ namespace Connect_four
             PointAdding.startPointColumn = Math.Min(5, PointAdding.Column + 3);
             PointAdding.endPointColumn = Math.Max(0, PointAdding.Column - 3);
             //compares coordinates of the starting point, in order to return one uniform point
-            int delta = Comparison(PointAdding);
-            PointAdding.startPointRow = PointAdding.Row - delta;
-            PointAdding.startPointColumn = PointAdding.Column + delta;
+            int deltaStart = ComparisonStart(PointAdding);
+            
+                PointAdding.startPointRow = PointAdding.Row +deltaStart;
+                PointAdding.startPointColumn = PointAdding.Column - deltaStart;
+
+            //compares coordinates of the ending point, in order to return one uniform point
+            int deltaEnd = ComparisonEnd(PointAdding);
+            
+                PointAdding.endPointRow = PointAdding.Row - deltaEnd;
+                PointAdding.endPointColumn = PointAdding.Column + deltaEnd;
+            
             int counter = 0;
             for (int i = 0; PointAdding.startPointRow + i < PointAdding.endPointRow + 1 || PointAdding.startPointColumn + i > PointAdding.endPointColumn + 1; i++)
             {
@@ -108,7 +125,7 @@ namespace Connect_four
         {
             // this function chack's if the bord has four points Perpendicular.
             PointAdding.startPointColumn = Math.Max(0, (PointAdding.Row - 3));
-            PointAdding.endPointColumn = Math.Min(6, (PointAdding.Row + 3));
+            PointAdding.endPointColumn = Math.Min(5, (PointAdding.Row + 3));
 
 
             int counter = 0;
@@ -132,12 +149,21 @@ namespace Connect_four
 
             return false;
         }
-        int Comparison(PointAddingModel pointAdding)
+        int ComparisonStart(PointAddingModel pointAdding)
         {
             //This function compares coordinates of the starting point, in order to return one uniform point.
             int rowDelta = Math.Abs(pointAdding.startPointRow - pointAdding.Row);
 
             int coluumnDelta = Math.Abs(pointAdding.startPointColumn - pointAdding.Column);
+            int Delta = Math.Min(rowDelta, coluumnDelta);
+            return Delta;
+        }
+        int ComparisonEnd(PointAddingModel pointAdding)
+        {
+            //This function compares coordinates of the ending point, in order to return one uniform point.
+            int rowDelta = Math.Abs(pointAdding.endPointRow - pointAdding.Row);
+
+            int coluumnDelta = Math.Abs(pointAdding.endPointColumn - pointAdding.Column);
             int Delta = Math.Min(rowDelta, coluumnDelta);
             return Delta;
         }

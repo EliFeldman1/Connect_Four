@@ -8,7 +8,7 @@ namespace Connect_four
 {
     internal class GameController : ChackForFour
     {
-        bool ChackForFour(PointAddingModel pointAddingModel, gameBoardModel gameBoard)
+      public  bool ChackForFour(PointAddingModel pointAddingModel, gameBoardModel gameBoard)
         {
 
             if (DiagonalRightUpTest(gameBoard, pointAddingModel) == true)
@@ -31,6 +31,7 @@ namespace Connect_four
             return false;
         }
       
+        
         
 
 

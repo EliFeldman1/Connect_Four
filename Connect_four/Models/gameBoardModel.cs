@@ -9,7 +9,7 @@ namespace Connect_four
     internal class gameBoardModel
     {
         public string[,] Board = new string[7, 6];
-        public int [] ColumnCounter = new int[6];
+        public int [] ColumnCounter = new int[7];
        
 
     }
