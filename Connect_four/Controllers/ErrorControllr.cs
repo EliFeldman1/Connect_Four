@@ -13,13 +13,13 @@ namespace Connect_four
             if (ChackIfRowValid(pointAddingModel) == false)
             {
                 errorModel.Posible = false;
-                errorModel.Message = " The row you have chosen is out of range ";
+                errorModel.Message = " The row you have chosen is out of range,Please choose another line ";
                 return errorModel;
             }
             if (ChackIfColumenFull(pointAddingModel, gameBoardModel) == false)
             {
                 errorModel.Posible = false;
-                errorModel.Message = " This row is full";
+                errorModel.Message = " This row is full, Please choose another line";
                 return errorModel;
             }
             

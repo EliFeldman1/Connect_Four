@@ -10,7 +10,7 @@ namespace Connect_four
     {
        public bool ChackIfColumenFull(PointAddingModel pointAddingModel, gameBoardModel gameBoard)
         {
-            if (gameBoard.ColumnCounter[pointAddingModel.Row] > 6)
+            if (gameBoard.ColumnCounter[pointAddingModel.Row] > 5)
             {
                 return false;
             }

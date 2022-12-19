@@ -10,7 +10,7 @@ namespace Connect_four
     {
         static void Main(string[] args)
         {
-            ChackForFour chackForFour= new ChackForFour();
+            
             gameBoardModel gameBoard = new gameBoardModel();
             PointAddingModel pointAddingModel = new PointAddingModel();
             ErrorControllr errorControllr= new ErrorControllr();
@@ -33,10 +33,11 @@ namespace Connect_four
                 }
                 else
                 {
-                    gameBoard.ColumnCounter[pointAddingModel.Row]++;
+                    
                     gameBoard.Board[pointAddingModel.Row, gameBoard.ColumnCounter[pointAddingModel.Row]] = pointAddingModel.CurrentPlayer;
                     pointAddingModel.Column = gameBoard.ColumnCounter[pointAddingModel.Row];
                     Victory = gameController.ChackForFour(pointAddingModel, gameBoard);
+                    gameBoard.ColumnCounter[pointAddingModel.Row]++;
                     if (Victory == true)
                     {
                         Console.WriteLine(" Congratulations " + pointAddingModel.CurrentPlayer + "! you won");
